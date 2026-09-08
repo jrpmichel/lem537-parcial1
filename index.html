@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>LEM537 · Primera Evaluación Parcial — Universidad La Salle Bajío</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231b2a63'/%3E%3Cpath d='M9 23V9h3.4v11.2H21V23z' fill='%23fff'/%3E%3Crect x='22' y='9' width='2.6' height='14' fill='%23c8102e'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<!-- ==================== BARRA SUPERIOR (examen en curso) ==================== -->
+<header class="barra" id="barra" hidden>
+  <div class="barra-int">
+    <span class="marca">LEM537 · Parcial 1</span>
+    <span class="quien" id="barraQuien"></span>
+    <span class="sep"></span>
+    <span class="chip" id="chipProgreso">0 / 25 contestados</span>
+    <span class="chip" id="chipReloj">00:00</span>
+    <button class="secundario" type="button" id="btnIrCierre">Finalizar</button>
+  </div>
+</header>
+
+<main class="contenedor">
+
+  <!-- ==================== PANTALLA 1 · PORTADA ==================== -->
+  <section id="pantallaPortada">
+    <div class="portada">
+      <div class="cinta"></div>
+      <div class="cuerpo">
+        <img class="logo" id="logo" alt="Universidad La Salle Bajío — Facultad de Ingenierías y Tecnologías">
+        <h1>Diseño de Elementos de Máquinas I</h1>
+        <h2 class="sub">Primera Evaluación Parcial · Unidades I y II</h2>
+
+        <table class="datos">
+          <tbody>
+            <tr><th>Clave de la asignatura</th><td>LEM537</td></tr>
+            <tr><th>Programa académico</th><td>Ingeniería Electromecánica · Quinto semestre · Grupo 501</td></tr>
+            <tr><th>Periodo</th><td>2026-2 (agosto–diciembre de 2026)</td></tr>
+            <tr><th>Profesor</th><td>Dr. Jorge Ramón Parra Michel</td></tr>
+            <tr><th>Alcance</th><td>Unidad I — Introducción al diseño mecánico · Unidad II — Diseño para distintos tipos de carga</td></tr>
+            <tr><th>Estructura</th><td>15 reactivos de criterio (60 pts) + 10 reactivos numéricos (40 pts) = 100 pts</td></tr>
+            <tr><th>Duración de referencia</th><td>110 minutos</td></tr>
+          </tbody>
+        </table>
+
+        <fieldset>
+          <legend>Identificación del sustentante</legend>
+          <div class="fila">
+            <div class="campo">
+              <label for="fNombre">Nombre completo (apellidos y nombres)</label>
+              <input type="text" id="fNombre" autocomplete="name" placeholder="Pérez Ramírez, Ana Sofía">
+            </div>
+            <div class="campo">
+              <label for="fMatricula">Matrícula</label>
+              <input type="text" id="fMatricula" autocomplete="off" placeholder="A00123456" spellcheck="false">
+              <div class="ayuda">La matrícula determina los datos numéricos de su examen. Verifíquela: un error aquí invalida la calificación automática.</div>
+            </div>
+          </div>
+          <div class="fila">
+            <div class="campo">
+              <label for="fGrupo">Grupo</label>
+              <input type="text" id="fGrupo" value="501">
+            </div>
+            <div class="campo">
+              <label for="fCorreo">Correo institucional (opcional)</label>
+              <input type="email" id="fCorreo" autocomplete="email" placeholder="usuario@lasallebajio.edu.mx">
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="aviso">
+          <b>Condiciones de aplicación y política de integridad</b>
+          <ul>
+            <li>Examen <b>individual</b>. Conforme a la política de uso de IA del curso, en los exámenes escritos <b>no se permite</b> el empleo de asistentes automáticos, ni consulta entre compañeros.</li>
+            <li>Se permite calculadora, formulario propio y los apuntes del curso, salvo indicación en contrario del profesor.</li>
+            <li>Los datos numéricos de la Sección B son <b>distintos para cada matrícula</b>. Copiar el resultado de un compañero produce una respuesta incorrecta y trazable.</li>
+            <li>Esta página registra, para efectos de integridad académica, el número de copiados y pegados, el tiempo con la ventana fuera de foco y la duración de la sesión. <b>Ese registro se imprime en el PDF que usted entrega.</b></li>
+            <li>El enunciado incorpora marcas de trazabilidad. Transcribirlo a un sistema externo es detectable y conduce a datos erróneos.</li>
+            <li>Sus respuestas se guardan automáticamente en este navegador. No cambie de equipo durante el examen.</li>
+          </ul>
+        </div>
+
+        <div class="campo declaracion">
+          <input type="checkbox" id="fDeclaro">
+          <label for="fDeclaro">Declaro que resolveré este examen de manera individual, sin asistencia de terceros ni de herramientas de inteligencia artificial, y acepto las condiciones de aplicación y el registro de integridad descritos arriba.</label>
+        </div>
+
+        <div class="acciones" style="justify-content:flex-start">
+          <button class="primario grande" type="button" id="btnIniciar" disabled>Iniciar examen</button>
+        </div>
+        <div class="pendientes" id="avisoPortada"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PANTALLA 2 · EXAMEN ==================== -->
+  <section id="pantallaExamen" hidden>
+    <div class="aviso info" id="cabeceraExamen"></div>
+
+    <h2 class="seccion-titulo">Sección A · Reactivos de criterio</h2>
+    <p class="seccion-desc">
+      15 reactivos · 4 puntos cada uno · 60 puntos. Respuesta de redacción libre. Se evalúa la
+      <b>decisión de ingeniería y su justificación</b>: hipótesis declaradas, criterio elegido con
+      argumento, coherencia física y consecuencias. Una respuesta que sólo enuncia una fórmula sin
+      decidir nada no acredita el reactivo. Responda cada inciso de forma identificable.
+    </p>
+    <div id="listaTeoricos"></div>
+
+    <h2 class="seccion-titulo">Sección B · Reactivos numéricos</h2>
+    <p class="seccion-desc">
+      10 reactivos · 4 puntos cada uno · 40 puntos. Tiempo de referencia: 5 minutos por reactivo.
+      <b>Los datos son propios de su matrícula.</b> Reporte los valores con al menos tres cifras
+      significativas y con el punto o la coma decimal indistintamente. El campo
+      <i>criterio</i> es obligatorio: en él se declara el modelo, la hipótesis y la base del cálculo;
+      un valor correcto sin criterio declarado obtiene calificación parcial.
+    </p>
+    <div id="listaNumericos"></div>
+
+    <div class="cierre" id="bloqueCierre">
+      <h2 style="color:var(--azul);margin:0 0 6px">Finalizar y entregar</h2>
+      <p style="margin:0;font-size:14.5px">
+        Al generar el PDF se cierra la sesión y se registra la hora de término. Revise antes que
+        todos los reactivos estén contestados. <b>El archivo PDF descargado es el único documento
+        válido de entrega</b>; súbalo a la tarea correspondiente de Microsoft Teams.
+      </p>
+      <div class="pendientes" id="avisoPendientes"></div>
+      <div class="acciones">
+        <button class="primario grande" type="button" id="btnGenerar">Generar y descargar PDF</button>
+      </div>
+      <div class="aviso exito" id="avisoDescarga" hidden></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="legal">
+  Universidad La Salle Bajío · Facultad de Ingenierías y Tecnologías · LEM537 Diseño de Elementos de Máquinas I<br>
+  Documento de evaluación de uso interno. Versión del instrumento: <span id="verInstrumento"></span>
+</footer>
+
+<script src="vendor/jspdf.umd.min.js"></script>
+<script src="assets/logo.js"></script>
+<script src="assets/fuentes.js"></script>
+<script src="assets/banco.js"></script>
+<script src="assets/pdf.js"></script>
+<script src="assets/examen.js"></script>
+</body>
+</html>
